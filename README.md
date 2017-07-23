@@ -61,3 +61,8 @@ $ docker exec -it nginx-gen cat /etc/nginx/conf.d/default.conf
 If you want to help out the community, feel free to submit a PR with other examples for popular site/apps such as Wordpress, ghost...
 
 I'll try to add some myself provided this repo gets enough stars.
+
+
+## links
+   * 参考: [证书生成](<http://www.cnblogs.com/flasheryu/p/5776492.html>)
+
