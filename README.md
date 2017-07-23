@@ -66,3 +66,7 @@ I'll try to add some myself provided this repo gets enough stars.
 ## links
    * 参考: [证书生成](<http://www.cnblogs.com/flasheryu/p/5776492.html>)
 
+generate cert:
+``` bash
+docker run --detach --hostname dockeryu.com --env GITLAB_OMNIBUS_CONFIG="registry_external_url 'https://dockeryu.com:4040';registry_nginx['ssl_certificate']='/etc/letsencrypt/live/dockeryu.com/dockeryu.com.crt';registry_nginx['ssl_certificate_key']='/etc/letsencrypt/live/dockeryu.com/dockeryu.com.key';external_url 'https://dockeryu.com/';nginx['redirect_http_to_https']=true;nginx['ssl_certificate']='/etc/letsencrypt/live/dockeryu.com/dockeryu.com.crt';nginx['ssl_certificate_key']='/etc/letsencrypt/live/dockeryu.com/dockeryu.com.key';" --publish 443:443 --publish 80:80 --publish 222:22 --publish 4040:4040 --name gitlab --restart always --volume /srv/gitlab/config:/etc/gitlab --volume /srv/gitlab/logs:/var/log/gitlab --volume /srv/gitlab/data:/var/opt/gitlab --volume /volumes/proxy/certs:/etc/letsencrypt/live/dockeryu.com --volume /var/run/docker.sock:/var/run/docker.sock --volume $(which docker):/usr/bin/docker gitlab/gitlab-ce
+```
