@@ -68,5 +68,19 @@ I'll try to add some myself provided this repo gets enough stars.
 
 generate cert:
 ``` bash
-docker run --detach --hostname dockeryu.com --env GITLAB_OMNIBUS_CONFIG="registry_external_url 'https://dockeryu.com:4040';registry_nginx['ssl_certificate']='/etc/letsencrypt/live/dockeryu.com/dockeryu.com.crt';registry_nginx['ssl_certificate_key']='/etc/letsencrypt/live/dockeryu.com/dockeryu.com.key';external_url 'https://dockeryu.com/';nginx['redirect_http_to_https']=true;nginx['ssl_certificate']='/etc/letsencrypt/live/dockeryu.com/dockeryu.com.crt';nginx['ssl_certificate_key']='/etc/letsencrypt/live/dockeryu.com/dockeryu.com.key';" --publish 443:443 --publish 80:80 --publish 222:22 --publish 4040:4040 --name gitlab --restart always --volume /srv/gitlab/config:/etc/gitlab --volume /srv/gitlab/logs:/var/log/gitlab --volume /srv/gitlab/data:/var/opt/gitlab --volume /volumes/proxy/certs:/etc/letsencrypt/live/dockeryu.com --volume /var/run/docker.sock:/var/run/docker.sock --volume $(which docker):/usr/bin/docker gitlab/gitlab-ce
+docker run --detach && \
+--hostname gitzw.com && \
+--env GITLAB_OMNIBUS_CONFIG="registry_external_url 'https://gitzw.com:5500';registry_nginx['ssl_certificate']='/certs/gitzw.com.crt';registry_nginx['ssl_certificate_key']='/certs/gitzw.com.key';external_url='https://gitzw.com/';nginx['redirect_http_to_https']=true;nginx['ssl_certificate']='/certs/gitzw.com.crt';nginx['ssl_certificate_key']='/certs/gitzw.com.key';" && \
+--publish 443:443 && \
+--publish 80:80 && \
+--publish 22:22 && \
+--name gitlab && \
+--restart always && \
+--volume /Users/logan/WorkSpace/gitlab2/config:/etc/gitlab && \
+--volume /srv/gitlab/logs:/var/log/gitlab && \
+--volume /srv/gitlab/data:/var/opt/gitlab && \
+--volume /Users/logan/WorkSpace/gitlab2/certs:/certs && \
+--volume /var/run/docker.sock:/var/run/docker.sock && \
+--volume $(which docker):/usr/bin/docker && \
+gitlab/gitlab-ce
 ```
