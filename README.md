@@ -66,11 +66,11 @@ I'll try to add some myself provided this repo gets enough stars.
 ## links
    * 参考: [证书生成](<http://www.cnblogs.com/flasheryu/p/5776492.html>)
 
-generate cert:
+attach cert and run gitlab:
 ``` bash
 docker run --detach && \
 --hostname gitzw.com && \
---env GITLAB_OMNIBUS_CONFIG="registry_external_url 'https://gitzw.com:5500';registry_nginx['ssl_certificate']='/certs/gitzw.com.crt';registry_nginx['ssl_certificate_key']='/certs/gitzw.com.key';external_url='https://gitzw.com/';nginx['redirect_http_to_https']=true;nginx['ssl_certificate']='/certs/gitzw.com.crt';nginx['ssl_certificate_key']='/certs/gitzw.com.key';" && \
+--env GITLAB_OMNIBUS_CONFIG="registry_external_url 'https://gitzw.com:5500';registry_nginx['ssl_certificate']='/certs/gitzw.com.crt';registry_nginx['ssl_certificate_key']='/certs/gitzw.com.key';external_url 'https://gitzw.com/';nginx['redirect_http_to_https']=true;nginx['ssl_certificate']='/certs/gitzw.com.crt';nginx['ssl_certificate_key']='/certs/gitzw.com.key';" && \
 --publish 443:443 && \
 --publish 80:80 && \
 --publish 22:22 && \
