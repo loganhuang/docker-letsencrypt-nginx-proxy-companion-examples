@@ -68,19 +68,5 @@ I'll try to add some myself provided this repo gets enough stars.
 
 attach cert and run gitlab:
 ``` bash
-docker run --detach && \
---hostname gitzw.com && \
---env GITLAB_OMNIBUS_CONFIG="registry_external_url 'https://gitzw.com:5500';registry_nginx['ssl_certificate']='/certs/gitzw.com.crt';registry_nginx['ssl_certificate_key']='/certs/gitzw.com.key';external_url 'https://gitzw.com/';nginx['redirect_http_to_https']=true;nginx['ssl_certificate']='/certs/gitzw.com.crt';nginx['ssl_certificate_key']='/certs/gitzw.com.key';" && \
---publish 443:443 && \
---publish 80:80 && \
---publish 22:22 && \
---name gitlab && \
---restart always && \
---volume /Users/logan/WorkSpace/gitlab2/config:/etc/gitlab && \
---volume /srv/gitlab/logs:/var/log/gitlab && \
---volume /srv/gitlab/data:/var/opt/gitlab && \
---volume /Users/logan/WorkSpace/gitlab2/certs:/certs && \
---volume /var/run/docker.sock:/var/run/docker.sock && \
---volume $(which docker):/usr/bin/docker && \
-gitlab/gitlab-ce
+docker run --detach --hostname git2.top --env GITLAB_OMNIBUS_CONFIG="registry_external_url 'https://git2.top:5500';registry_nginx['ssl_certificate']='/certs/git2.top.crt';registry_nginx['ssl_certificate_key']='/certs/git2.top.key';external_url 'https://git2.top/';nginx['redirect_http_to_https']=true;nginx['ssl_certificate']='/certs/git2.top.crt';nginx['ssl_certificate_key']='/certs/git2.top.key';" --publish 443:443 --publish 80:80 --publish 1022:22 --publish 5500:5500 --name gitlab --restart always --volume /gitlab/config:/etc/gitlab --volume /srv/gitlab/logs:/var/log/gitlab --volume /srv/gitlab/data:/var/opt/gitlab --volume /certs:/certs --volume /var/run/docker.sock:/var/run/docker.sock --volume $(which docker):/usr/bin/docker gitlab/gitlab-ce
 ```
